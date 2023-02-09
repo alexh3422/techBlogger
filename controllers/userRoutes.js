@@ -15,34 +15,6 @@ router.get("/logout", (req, res) => {
   res.send("logged out");
 });
 
-router.post("/", (req, res) => {
-  // check if username already exists before creating a new user
-  User.findOne({
-    where: {
-      username: req.body.username,
-    },
-  }).then((userData) => {
-    if (userData) {
-      res.status(400).json({ msg: "Username already exists" });
-      alert("Username already exists");
-      return;
-    }
-    User.create({
-      username: req.body.username,
-      password: req.body.password,
-    })
-      .then((dbUserData) => {
-        req.session.userId = dbUserData.id;
-        req.session.userUsername = dbUserData.username;
-        res.json(dbUserData);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
-});
-
 router.get("/:id", (req, res) => {
   User.findOne({
     where: {
@@ -90,12 +62,23 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  User.create({
-    username: req.body.username,
-    password: req.body.password,
-  }).catch((err) => {
-    console.log(err);
-    res.status(500).json({ msg: "oh noes!", err });
+  User.findOne({
+    where: {
+      username: req.body.username,
+    },
+  }).then((userData) => {
+    if (userData) {
+      return res.status(401).json({ msg: "username already exists" });
+      alert("username already exists");
+    } else {
+      User.create({
+        username: req.body.username,
+        password: req.body.password,
+      }).catch((err) => {
+        console.log(err);
+        res.status(500).json({ msg: "oh noes!", err });
+      });
+    }
   });
 });
 
