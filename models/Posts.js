@@ -16,8 +16,9 @@ Posts.init(
       allowNull: false,
     },
     content: {
-      type: DataTypes.TEXT(100000),
+      type: DataTypes.TEXT,
       allowNull: false,
+
     },
   },
 

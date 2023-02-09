@@ -2,9 +2,9 @@ const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
-class User extends Model {}
+class Users extends Model {}
 
-User.init(
+Users.init(
   {
     username: {
       type: DataTypes.STRING,
@@ -36,4 +36,4 @@ User.init(
   }
 );
 
-module.exports = User;
+module.exports = Users;

@@ -30,24 +30,22 @@
       </div>
     </div>
     <button id="profile" class="profile-button">Profile</button>
-
     <button id="logout" class="logout-button">Logout</button>
   </nav>
 </header>
 
 <div class="postDiv">
-  <h1 class="page-title"> Posts: </h1>
+<h1 class="page-title" style="margin: top 50px;"> My Posts: </h1>
 
-  {{#each allPosts}}
-    <div id="posts" class="post">
-      <section class="post-box">
-        <h2> @{{user.username}} posted</h2>
-        <h1>{{title}}</h1>
-        <p> {{content}}</p>
-      </section>
-    </div>
-  {{/each}}
-</div>
+{{#each myPosts}}
+  <div id="posts" class="post">
+    <section class="post-box">
+      <h2> @{{user.username}} posted</h2>
+      <h1>{{title}}</h1>
+      <p> {{content}}</p>
+    </section>
+  </div>
+{{/each}}
 
 <script src="/js/homepage.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

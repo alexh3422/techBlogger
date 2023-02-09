@@ -1,20 +1,41 @@
 const express = require("express");
 const router = express.Router();
-const { Posts, User } = require("../models");
+const { Posts, Users } = require("../models");
 
 router.get("/", (req, res) => {
   if (!req.session.userId) {
     res.redirect("/login");
   } else {
     Posts.findAll({
-      include: [User],
+      include: [Users],
     }).then((PostData) => {
       console.log(PostData);
       const hbsPost = PostData.map((Post) => Post.toJSON());
       console.log("==============================");
       console.log(hbsPost);
       res.render("home", {
-        allPosts: hbsPost, 
+        allPosts: hbsPost,
+      });
+    });
+  }
+});
+
+router.get("/profile", (req, res) => {
+  if (!req.session.userId) {
+    res.redirect("/login");
+  } else {
+    Posts.findAll({
+      where: {
+        userId: req.session.userId,
+      },
+      include: [Users],
+    }).then((PostData) => {
+      console.log(PostData);
+      const hbsPost = PostData.map((Post) => Post.toJSON());
+      console.log("==============================");
+      console.log(hbsPost);
+      res.render("profile", {
+        myPosts: hbsPost,
       });
     });
   }

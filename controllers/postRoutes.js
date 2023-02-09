@@ -1,12 +1,12 @@
 const express = require("express");
 const router = require("express").Router();
-const { User, Posts } = require("../models");
+const { Users, Posts } = require("../models");
 
 router.get("/", (req, res) => {
   Posts.findAll({
     include: [
       {
-        model: User,
+        model: Users,
         attributes: ["username"],
       },
     ],
@@ -50,6 +50,34 @@ router.delete("/:id", (req, res) => {
       }
       res.json(dbPostData);
     })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+//posts from session user
+
+router.get("/users", (req, res) => {
+  if (!req.session.userId) {
+    res
+      .status(400)
+
+      .json({ message: "You must be logged in " });
+    return;
+  }
+  Posts.findAll({
+    where: {
+      userId: req.session.userId,
+    },
+    include: [
+      {
+        model: Users,
+        attributes: ["username"],
+      },
+    ],
+  })
+    .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

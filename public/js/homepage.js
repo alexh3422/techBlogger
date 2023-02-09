@@ -19,6 +19,11 @@ const titleInput = document.getElementById("titleInput");
 const contentInput = document.getElementById("contentInput");
 const cancelBtn = document.getElementById("close-button");
 const submitBtn = document.getElementById("submitBtn");
+const profileBtn = document.getElementById("profile");
+
+profileBtn.addEventListener("click", function () {
+  location.replace("/profile");
+});
 
 // Get reference to the new post button
 const newPostBtn = document.getElementById("new-post");
@@ -30,12 +35,16 @@ newPostBtn.addEventListener("click", function () {
 
 // Close the modal when the cancel button is clicked
 cancelBtn.addEventListener("click", function () {
- 
-
   titleInput.value = "";
   contentInput.value = "";
 
   modal.style.display = "none";
+});
+
+const homeBtn = document.getElementById("homepage");
+
+homeBtn.addEventListener("click", function () {
+  location.replace("/");
 });
 
 // Submit the new post when the submit button is clicked
@@ -57,7 +66,6 @@ submitPost.addEventListener("click", function () {
   });
 
   // Clear the input fields after submitting
-
 
   titleInput.value = "";
   contentInput.value = "";

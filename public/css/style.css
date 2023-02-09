@@ -38,6 +38,23 @@ nav {
   margin: 10px 0;
 }
 
+.profile-button {
+  background-color: #fff;
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.profile-button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
 /* logout button styles */
 .logout-button {
   background-color: #fff;
@@ -200,4 +217,8 @@ p {
 .cancel-button {
   background-color: #f44336;
   color: #fff;
+}
+
+.postDiv {
+  margin-top: 10%;
 }

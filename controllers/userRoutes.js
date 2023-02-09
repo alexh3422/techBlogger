@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { User, Posts } = require("../models");
+const { Users, Posts } = require("../models");
 const bcrypt = require("bcrypt");
 router.get("/", (req, res) => {
-  User.findAll()
+  Users.findAll()
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
       console.log(err);
@@ -16,7 +16,7 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  User.findOne({
+  Users.findOne({
     where: {
       id: req.params.id,
     },
@@ -37,7 +37,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-  User.findOne({
+  Users.findOne({
     where: {
       username: req.body.username,
     },
@@ -62,7 +62,7 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  User.findOne({
+  Users.findOne({
     where: {
       username: req.body.username,
     },
@@ -71,7 +71,7 @@ router.post("/signup", (req, res) => {
       alert = "username already exists";
       return res.status(401).json({ msg: "username already exists" });
     } else {
-      User.create({
+      Users.create({
         username: req.body.username,
         password: req.body.password,
       }).catch((err) => {
@@ -84,7 +84,7 @@ router.post("/signup", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  User.destroy({
+  Users.destroy({
     where: {
       id: req.params.id,
     },
