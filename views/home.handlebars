@@ -1,6 +1,39 @@
-<h1 id="header"> HOMEPAGE</h1>
+<header class="header">
+  <h1 class="header__title">Tech Blogger</h1>
+  <nav>
 
-<button id="logout" class="logout-button">Logout</button>
+    <button id="logout" class="logout-button">Logout</button>
+    <button id="new-post" class="new-post-button">New Post</button>
+
+    <div class="modal" id="newPostModal">
+      <div class="modal-content">
+        <span id="close-button" class="close-button">&times;</span>
+        <h2>New Post</h2>
+        <form id="newPostForm">
+          <div class="form-group">
+            <label for="titleInput" style="color:black">Title:</label>
+            <input class="form-input" type="text" id="titleInput" />
+          </div>
+          <div class="form-group">
+            <label for="contentInput" style="color:black">Content:</label>
+            <textarea class="form-input" id="contentInput" rows="20">
+            </textarea>
+          </div>
+          <div class="form-group">
+            <button
+              class="btn btn-primary submit-button"
+              id="submitPost"
+            >Submit</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+    <button id="homepage" class="homepage-button">Homepage</button>
+  </nav>
+</header>
+
+<h1 class="page-title"> Posts: </h1>
 
 {{#each allPosts}}
   <div id="posts" class="post">

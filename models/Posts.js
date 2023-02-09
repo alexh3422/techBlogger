@@ -18,6 +18,9 @@ Posts.init(
     content: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1, 100000],
+      },
     },
   },
 
@@ -31,3 +34,4 @@ Posts.init(
 );
 
 module.exports = Posts;
+
