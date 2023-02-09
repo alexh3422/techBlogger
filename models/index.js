@@ -15,5 +15,3 @@ User.hasMany (Posts
 
 
 module.exports = { User, Posts};
-
-
