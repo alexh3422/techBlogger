@@ -12,15 +12,13 @@ Posts.init(
       autoIncrement: true,
     },
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
-      validate: {
-        len: [1, 100000],
-      },
+     
     },
   },
 
@@ -34,4 +32,3 @@ Posts.init(
 );
 
 module.exports = Posts;
-
