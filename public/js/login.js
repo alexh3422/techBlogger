@@ -15,7 +15,7 @@ document.querySelector("#loginForm").addEventListener("submit", (e) => {
     if (res.ok) {
       location.href = "/";
     } else {
-      alert("WOMP");
+      alert("incorrect username or password");
     }
   });
 });

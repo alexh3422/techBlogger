@@ -68,16 +68,17 @@ router.post("/signup", (req, res) => {
     },
   }).then((userData) => {
     if (userData) {
+      alert = "username already exists";
       return res.status(401).json({ msg: "username already exists" });
-      alert("username already exists");
     } else {
       User.create({
         username: req.body.username,
         password: req.body.password,
       }).catch((err) => {
         console.log(err);
-        res.status(500).json({ msg: "oh noes!", err });
+        res.status(500).json({ msg: "error", err });
       });
+      res.status(200).json({ msg: "password was successfully created" });
     }
   });
 });

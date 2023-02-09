@@ -117,7 +117,7 @@ p {
   bottom: 0;
   left: 0;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 90px;
 }
 
 .footer__text {
@@ -170,8 +170,6 @@ p {
   border: 1px solid #ddd;
   box-sizing: border-box;
 }
-
-
 
 .submit-button,
 .cancel-button {

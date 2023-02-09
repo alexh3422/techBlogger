@@ -12,10 +12,14 @@ document.querySelector("#signupForm").addEventListener("submit", (e) => {
       "Content-Type": "application/json",
     },
   }).then((res) => {
+    console.log(res);
     if (res.ok) {
       location.href = "/login";
     } else {
-      alert("trumpet sound");
+      alert("please try again");
     }
+    console.log(res);
+
+    console.log("test");
   });
 });
