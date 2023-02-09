@@ -1,9 +1,9 @@
-<h2>Login</h2>
+<h2>Welcome to Tech Blogger!</h2>
 
-<form class="form login-form">
+<form id="loginForm">
   <div class="form-group">
     <label for="username-login">username:</label>
-    <input class="form-input" type="text" id="email-login" />
+    <input class="form-input" type="text" id="user-login" />
   </div>
   <div class="form-group">
     <label for="password-login">password:</label>
@@ -11,7 +11,23 @@
   </div>
   <div class="form-group">
     <button class="btn btn-primary" type="submit">login</button>
+
   </div>
 </form>
 
+<div class="signup">
+  <p>Don't have an account?</p>
+  <a href="/signup"> <h2>signup here!</h2></a>
+</div>
+
 <script src="/js/login.js"></script>
+
+<style>body { background-color: #f2f2f2; font-family: Arial, sans-serif; }
+  .form-group { text-align: center; margin: 30px 0; } .form-input { width: 50%;
+  padding: 10px; font-size: 16px; border: none; border-radius: 5px;
+  margin-bottom: 20px; } .btn-primary { background-color: #4CAF50; color: white;
+  padding: 12px 20px; border-radius: 5px; border: none; font-size: 16px; cursor:
+  pointer; } #loginForm { width: 50%; margin: 0 auto; } a { text-align: center;
+  display: block; margin-top: 30px; font-size: 18px; color: #4CAF50; } .signup {
+  text-align: center; } h2 { text-align: center; margin-top: 30px; }
+</style>

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User, Posts } = require("../../models");
+const { User, Posts } = require("../models");
 const bcrypt = require("bcrypt");
 router.get("/", (req, res) => {
   User.findAll()
@@ -8,6 +8,11 @@ router.get("/", (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.send("logged out");
 });
 
 router.post("/", (req, res) => {
@@ -28,7 +33,7 @@ router.get("/:id", (req, res) => {
       id: req.params.id,
     },
     attributes: { exclude: ["password"] },
-    include : [ Posts ]
+    include: [Posts],
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -67,5 +72,35 @@ router.post("/login", (req, res) => {
       res.status(500).json({ msg: "oh noes!", err });
     });
 });
+
+router.post("/signup", (req, res) => {
+  User.create({
+    username: req.body.username,
+    password: req.body.password,
+  }).catch((err) => {
+    console.log(err);
+    res.status(500).json({ msg: "oh noes!", err });
+  });
+});
+
+router.delete("/:id", (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 
 module.exports = router;
