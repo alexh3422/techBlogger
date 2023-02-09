@@ -14,6 +14,7 @@ document.querySelector("#signupForm").addEventListener("submit", (e) => {
   }).then((res) => {
     console.log(res);
     if (res.ok) {
+      alert = "success";
       location.href = "/login";
     } else {
       alert("please try again");
