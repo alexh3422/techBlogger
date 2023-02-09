@@ -16,15 +16,31 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  User.create({
-    username: req.body.username,
-    password: req.body.password,
-  })
-    .then((dbUserData) => res.json(dbUserData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  // check if username already exists before creating a new user
+  User.findOne({
+    where: {
+      username: req.body.username,
+    },
+  }).then((userData) => {
+    if (userData) {
+      res.status(400).json({ msg: "Username already exists" });
+      alert("Username already exists");
+      return;
+    }
+    User.create({
+      username: req.body.username,
+      password: req.body.password,
+    })
+      .then((dbUserData) => {
+        req.session.userId = dbUserData.id;
+        req.session.userUsername = dbUserData.username;
+        res.json(dbUserData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  });
 });
 
 router.get("/:id", (req, res) => {
@@ -101,6 +117,5 @@ router.delete("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;
