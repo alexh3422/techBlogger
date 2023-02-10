@@ -85,7 +85,22 @@ delBtn.forEach(function (btn) {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     }).then(function () {
-      location.reload(); 
+      location.reload();
     });
   });
 });
+
+function comments() {
+  fetch("/api/comments", {
+    method: "GET",
+  })
+    .then(function (res) {
+      console.log(res);
+      return res.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+}
+
+comments();

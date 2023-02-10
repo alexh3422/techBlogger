@@ -46,6 +46,31 @@
         <h1>{{title}}</h1>
         <p> {{content}}</p>
         <button class="delBtn" data-post-id="{{id}}">delete</button>
+
+        <div class="comments">
+          <h2> Comments: </h2>
+          {{#each dataValues.comments}}
+            <div class="comment">
+              <p> {{comment_text}} </p>
+            </div>
+          {{/each}}
+
+          <form id="newCommentForm">
+            <div class="form-group">
+              <label for="commentInput" style="color:black">Comment:</label>
+              <textarea class="form-input" id="commentInput" rows="5">
+              </textarea>
+            </div>
+            <div class="form-group">
+              <button
+                class="btn btn-primary submit-comment-button"
+                id="submitComment"
+                data-post-id="{{id}}"
+              >Submit Comment</button>
+            </div>
+          </form>
+        </div>
+
       </section>
     </div>
   {{/each}}

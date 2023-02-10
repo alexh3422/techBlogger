@@ -1,18 +1,26 @@
 const express = require("express");
 const router = express.Router();
-const { Posts, Users } = require("../models");
+const { Posts, Users, Comments } = require("../models");
 
 router.get("/", (req, res) => {
   if (!req.session.userId) {
     res.redirect("/login");
   } else {
     Posts.findAll({
-      include: [Users],
+      include: [
+        {
+          model: Comments,
+          include: {
+            model: Users,
+          },
+        },
+      ],
     }).then((PostData) => {
       console.log(PostData);
       const hbsPost = PostData.map((Post) => Post.toJSON());
       console.log("==============================");
       console.log(hbsPost);
+
       res.render("home", {
         allPosts: hbsPost.reverse(),
       });
@@ -54,7 +62,5 @@ router.get("/profile", (req, res) => {
     res.render("profile");
   }
 });
-
-
 
 module.exports = router;
