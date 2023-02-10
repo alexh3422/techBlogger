@@ -39,11 +39,13 @@
   <h1 class="page-title"> Posts: </h1>
 
   {{#each allPosts}}
+
     <div id="posts" class="post">
       <section class="post-box">
         <h2> @{{user.username}} posted</h2>
         <h1>{{title}}</h1>
         <p> {{content}}</p>
+        <button class="delBtn" data-post-id="{{id}}">delete</button>
       </section>
     </div>
   {{/each}}

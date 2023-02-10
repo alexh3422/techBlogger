@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
       console.log("==============================");
       console.log(hbsPost);
       res.render("home", {
-        allPosts: hbsPost,
+        allPosts: hbsPost.reverse(),
       });
     });
   }
@@ -54,5 +54,7 @@ router.get("/profile", (req, res) => {
     res.render("profile");
   }
 });
+
+
 
 module.exports = router;

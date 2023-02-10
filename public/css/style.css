@@ -35,7 +35,6 @@ nav {
   font-size: 3.5em;
   font-weight: 500;
   color: #333;
-  margin: 10px 0;
 }
 
 .profile-button {
@@ -220,5 +219,12 @@ p {
 }
 
 .postDiv {
-  margin-top: 10%;
+  margin-top: 120px;
+}
+
+@media screen and (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    padding: 10px;
+  }
 }

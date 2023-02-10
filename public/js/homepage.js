@@ -73,3 +73,19 @@ submitPost.addEventListener("click", function () {
   // Close the modal after submitting
   modal.style.display = "none";
 });
+
+const delBtn = document.querySelectorAll(".delBtn");
+
+delBtn.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    const postId = btn.getAttribute("data-post-id");
+
+    // Now you have the post ID, you can use it in the DELETE request
+    fetch(`/api/posts/${postId}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    }).then(function () {
+      location.reload(); 
+    });
+  });
+});
