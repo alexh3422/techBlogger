@@ -18,10 +18,10 @@ router.get("/", (req, res) => {
         },
       ],
     }).then((PostData) => {
-      console.log(PostData);
+      
       const hbsPost = PostData.map((Post) => Post.toJSON());
-      console.log("==============================");
-      console.log(hbsPost);
+      
+      
 
       res.render("home", {
         allPosts: hbsPost.reverse(),
@@ -40,10 +40,10 @@ router.get("/profile", (req, res) => {
       },
       include: [Users],
     }).then((PostData) => {
-      console.log(PostData);
+      
       const hbsPost = PostData.map((Post) => Post.toJSON());
-      console.log("==============================");
-      console.log(hbsPost);
+      
+      
       res.render("profile", {
         myPosts: hbsPost.reverse(),
       });

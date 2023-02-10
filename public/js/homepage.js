@@ -90,7 +90,22 @@ delBtn.forEach(function (btn) {
   });
 });
 
+<<<<<<< HEAD
 const submitComment = document.querySelectorAll(".submitComment");
+=======
+function comments() {
+  fetch("/api/comments", {
+    method: "GET",
+  })
+    .then(function (res) {
+      
+      return res.json();
+    })
+    .then(function (data) {
+      
+    });
+}
+>>>>>>> 80f32dbc7e1eb0275b9881f1b4d19b9da708b001
 
 submitComment.addEventListener("click", function () {
   const postTitle = titleInput.value;
