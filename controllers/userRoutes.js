@@ -5,7 +5,7 @@ router.get("/", (req, res) => {
   Users.findAll()
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
-      console.log(err);
+      
       res.status(500).json(err);
     });
 });
@@ -31,7 +31,7 @@ router.get("/:id", (req, res) => {
       res.json(dbUserData);
     })
     .catch((err) => {
-      console.log(err);
+      
       res.status(500).json(err);
     });
 });
@@ -56,7 +56,7 @@ router.post("/login", (req, res) => {
       }
     })
     .catch((err) => {
-      console.log(err);
+      
       res.status(500).json({ msg: "oh noes!", err });
     });
 });
@@ -75,7 +75,7 @@ router.post("/signup", (req, res) => {
         username: req.body.username,
         password: req.body.password,
       }).catch((err) => {
-        console.log(err);
+        
         res.status(500).json({ msg: "error", err });
       });
       res.status(200).json({ msg: "password was successfully created" });
@@ -97,7 +97,7 @@ router.delete("/:id", (req, res) => {
       res.json(dbUserData);
     })
     .catch((err) => {
-      console.log(err);
+      
       res.status(500).json(err);
     });
 });
