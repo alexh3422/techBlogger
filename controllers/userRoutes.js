@@ -57,7 +57,7 @@ router.post("/login", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ msg: "oh noes!", err });
+      res.status(500).json({ msg: "Try Again!", err });
     });
 });
 

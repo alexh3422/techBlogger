@@ -7,14 +7,7 @@ router.get("/", (req, res) => {
     res.redirect("/login");
   } else {
     Posts.findAll({
-      include: [
-        {
-          model: Comments,
-          include: {
-            model: Users,
-          },
-        },
-      ],
+      include: [Users],
     }).then((PostData) => {
       console.log(PostData);
       const hbsPost = PostData.map((Post) => Post.toJSON());
@@ -43,7 +36,7 @@ router.get("/profile", (req, res) => {
       console.log("==============================");
       console.log(hbsPost);
       res.render("profile", {
-        myPosts: hbsPost,
+        myPosts: hbsPost.reverse(),
       });
     });
   }

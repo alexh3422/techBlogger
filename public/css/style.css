@@ -34,7 +34,7 @@ nav {
   text-align: center;
   font-size: 3.5em;
   font-weight: 500;
-  color: #333;
+  color: #ffffff;
 }
 
 .profile-button {
@@ -119,6 +119,7 @@ nav {
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  box-shadow: #4caf50 0px 0px 10px 0px;
 }
 
 h1,
@@ -226,5 +227,17 @@ p {
   .header {
     flex-direction: column;
     padding: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .postDiv {
+    margin-top: 170px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .postDiv {
+    margin-top: 150px;
   }
 }
