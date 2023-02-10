@@ -45,12 +45,12 @@
         <h2> @{{user.username}} posted</h2>
         <h1>{{title}}</h1>
         <p> {{content}}</p>
-        <button class="delBtn" data-post-id="{{id}}">delete</button>
 
         <div class="comments">
           <h2> Comments: </h2>
-          {{#each dataValues.comments}}
+          {{#each Comments}}
             <div class="comment">
+              <h3> @{{user.username}} commented</h3>
               <p> {{comment_text}} </p>
             </div>
           {{/each}}

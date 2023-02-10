@@ -7,7 +7,16 @@ router.get("/", (req, res) => {
     res.redirect("/login");
   } else {
     Posts.findAll({
-      include: [Users],
+      include: [
+        {
+          model: Users,
+          attributes: ["username"],
+        },
+        {
+          model: Comments,
+          attributes: ["comment_text"],
+        },
+      ],
     }).then((PostData) => {
       console.log(PostData);
       const hbsPost = PostData.map((Post) => Post.toJSON());

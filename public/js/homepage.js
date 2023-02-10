@@ -90,17 +90,23 @@ delBtn.forEach(function (btn) {
   });
 });
 
-function comments() {
-  fetch("/api/comments", {
-    method: "GET",
-  })
-    .then(function (res) {
-      console.log(res);
-      return res.json();
-    })
-    .then(function (data) {
-      console.log(data);
-    });
-}
+const submitComment = document.querySelectorAll(".submitComment");
 
-comments();
+submitComment.addEventListener("click", function () {
+  const postTitle = titleInput.value;
+  const postContent = contentInput.value;
+
+  // Add logic to send the new post data to the server here
+
+  fetch("/api/comments", {
+    method: "POST",
+    body: JSON.stringify({
+      comment_text: postContent,
+      userId: req.session.userId,
+      postId: req.body.postId,
+    }),
+    headers: { "Content-Type": "application/json" },
+  }).then(function () {
+    location.reload();
+  });
+});
